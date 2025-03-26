@@ -1,0 +1,16 @@
+package com.myapp;
+
+public class User {
+	private String username;
+	private String password;
+	
+	void doRegister(String username, String password) {
+		this.username = username;
+		this.password = password;
+		System.out.println("Berhasil mendaftar!");
+	}
+	
+	void showNotification() {
+		System.out.println("Created by " + this.username);
+	}
+}

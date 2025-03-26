@@ -1,0 +1,76 @@
+
+package com.gen.pizza;
+
+public class Pizza {
+	private int price; // Masih aman kalau di satu class
+	private boolean veg;
+	
+	private final int extraCheesePrice = 100;
+	private final int extraToppingPrice = 150;
+	private final int backpack = 20;
+	
+	private int basePizzaPrice;
+	private boolean extraCheeseAdded = false;
+	private boolean extraToppingAdded = false;
+	private boolean isTakeAway = false;
+	
+	public Pizza(boolean veg) {
+		super();
+		this.veg = veg;
+		if(this.veg) {
+			this.price = 300;		
+		}else {
+			this.price = 400;
+		}
+		
+		basePizzaPrice = this.price;
+	}	
+	
+	public int getPrice() {
+		return this.price;
+	}
+
+	public void addExtraCheese() {
+//		System.out.println("Extra Cheese Added");
+		this.price += extraCheesePrice;
+		this.extraCheeseAdded = true;
+	}
+	
+	public void addExtraTopping() {
+//		System.out.println("Extra Topping Added");
+		this.price += extraToppingPrice;
+		this.extraToppingAdded = true;
+	}
+	
+	public void takeAway() {
+//		System.out.println("Take away order!");
+		this.price += backpack;
+		this.isTakeAway = true;
+	}
+	
+	public void getBill() {
+		String bill = "";
+		
+//		System.out.println("Pizza : " + this.basePizzaPrice);
+		
+		bill += "Base Pizza : "+ this.basePizzaPrice + "\n";
+		
+		if(extraCheeseAdded) {
+			bill += "Cheese : "+ this.extraCheesePrice + "\n";
+		}
+		
+		if(extraToppingAdded) {
+			bill += "Topping : "+ this.extraToppingPrice + "\n";
+		}
+		
+		if(isTakeAway) {
+			bill += "Backpack : "+ this.backpack + "\n";
+		}
+		
+		bill += "Total Price must be paid : " + this.price;
+		
+		System.out.println(bill);
+	}
+	
+
+}

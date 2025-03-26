@@ -1,0 +1,22 @@
+package com.gen.pizza;
+
+public class DeluxePizza extends Pizza {
+
+	public DeluxePizza(boolean veg) {
+		super(veg);
+	}
+
+	@Override
+	public void addExtraCheese() {
+		// TODO Auto-generated method stub
+		super.addExtraCheese();
+	}
+
+	@Override
+	public void addExtraTopping() {
+		// TODO Auto-generated method stub
+		super.addExtraTopping();
+	}
+	
+	
+}

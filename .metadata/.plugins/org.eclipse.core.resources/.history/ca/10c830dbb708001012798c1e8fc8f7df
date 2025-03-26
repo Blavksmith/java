@@ -1,0 +1,24 @@
+package com.myapp;
+
+import java.util.UUID;
+
+public class User extends Display{
+	protected String username;
+	protected String password;
+	protected String token;
+	
+	public void getToken() {
+		token = UUID.randomUUID().toString();
+	}
+
+	public void doRegister(String username, String password) {
+		this.username = username;
+		this.password = password;
+		getToken();
+	}
+	
+	void showNotification() {
+		System.out.println("Created by " + this.username);
+		showToken(token);
+	}
+}

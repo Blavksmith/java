@@ -1,0 +1,25 @@
+
+package com.gen.pizza;
+
+public class Pizza {
+	private int price;
+	private boolean veg;
+	
+	public Pizza(boolean veg) {
+		super();
+		this.veg = veg;
+		if(this.veg) {
+			this.price = 300;		
+		}else {
+			this.price = 400;
+		}
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+//	public boolean isVeg() {
+//		return veg;
+//	}
+}

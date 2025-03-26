@@ -1,0 +1,14 @@
+package com.myapp;
+
+public class Admin extends User{
+	void createUser(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	@Override
+	void showNotification() {
+		System.out.println("User created by admin");
+	}
+	
+}

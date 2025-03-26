@@ -1,0 +1,13 @@
+package com.gen.pizza;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Pizza pizza = new Pizza(true);
+		int price = pizza.getPrice();		
+		System.out.println(price);
+		
+
+	}
+
+}

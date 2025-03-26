@@ -1,0 +1,17 @@
+package com.myapp;
+
+public class Admin extends User{
+	
+	private final String role = "admin";
+	
+	void createUser(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
+	@Override
+	void showNotification() {
+		System.out.println("Created by " + role);
+	}
+	
+}
