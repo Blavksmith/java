@@ -1,6 +1,5 @@
 package com.meinHotel;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -79,25 +78,6 @@ public class Reservation {
 
 	public void setRoom(Room room) {
 		this.room = room;
-	}
-	
-	public void printAll() {
-		System.out.println("Arrival Date : " + arrivalDate.format(formatter));
-		System.out.println("Departure Date : " + departureDate.format(formatter));
-		
-		int days = Period.between(arrivalDate, departureDate).getDays();
-		System.out.println(days + "Days");
-		System.out.println("---------- Guest Info -----------");
-		guest.printAll();
-		System.out.println("----------- Room Info -----------");
-		room.printAll();
-		
-		// Harga dari kelas room * days
-		double price = days*room.getPrice();
-		System.out.println("Price : " + price);
-		
-		// Nilainya sudah dipass ke constructor dari reservation
-		System.out.println("Total after discount : " + this.price);
 	}
 	
 	

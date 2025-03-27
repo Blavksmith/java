@@ -1,0 +1,68 @@
+package com.meinHotel;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
+public class ReservationController {
+	public static void createReservation(ArrayList<Guest> guests, ArrayList<Room> rooms, ArrayList<Reservation> reservations, Scanner sc) {
+		private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		
+		System.out.println("Enter arrival date (yyyy-MM-dd) : ");
+		String arrDate = sc.next();
+		System.out.println("Enter arrival date (yyyy-MM-dd) : ");
+		String depDate = sc.next();
+		
+		System.out.println("Enter guest id:\n Search Guest by Name");
+		int guestId = sc.nextInt();
+		if(guestId == -1) {
+			GuestController.searchGuest(guests, sc);
+			System.out.println("Enter guest id : ");
+			guestId = sc.nextInt();
+		}
+		
+		System.out.println("Enter room id\n Show all room");
+		int roomId = sc.nextInt();
+		if(roomId == -1) {
+			RoomController.showAllRoom(rooms);
+			System.out.println("Enter room id :");
+			roomId = sc.nextInt();
+		}
+		
+		// Mengubah date jadi localDate
+		LocalDate arrivalDate = LocalDate.parse(arrDate, formatter);
+		LocalDate departureDate = LocalDate.parse(depDate, formatter);
+		
+		// Mencari room
+		Guest guest = guests.get(guestId);
+		Room room = RoomController.getRoomById(roomId, rooms);
+		if(room.isReserved(arrivalDate, departureDate)) {
+			System.out.println("This room is reserved");
+			return;
+		}else {
+			int days = Period.between(arrivalDate, departureDate).getDays();
+			double sum = days * room.getPrice();
+			double total = sum - sum*guest.getDiscount()/100;
+			System.out.println("Total before discount:" + sum);
+			System.out.println("Total after discount: " + total);
+			
+			System.out.println("Will you pay now?\n1.Yes\n2.No");
+			String status = "";
+			int choiceStatus = sc.nextInt();
+			if(choiceStatus == 1) {
+				status = "Paid";
+			}else {
+				status = "Room has been reserved!";
+			}
+			
+			Reservation newReservation = new Reservation(arrivalDate, departureDate, total, status, guest, room);
+			newReservation.printAll();
+			reservations.add(newReservation);
+			System.out.println("Reservation setted up! Have a nice one :) ");
+			
+		}
+		
+		
+		
+	}
+}

@@ -152,14 +152,5 @@ public class ReservationController {
 			}else {
 				status = "Room has been reserved!";
 			}
-			
-		reservation.setArrivalDate(arrivalDate);
-		reservation.setDepartureDate(departureDate);
-		reservation.setRoom(room);
-		reservation.setStatus(status);
-		reservation.setPrice(total);
-		
-		reservations.add(id, reservation);
-	}
 	}
 }

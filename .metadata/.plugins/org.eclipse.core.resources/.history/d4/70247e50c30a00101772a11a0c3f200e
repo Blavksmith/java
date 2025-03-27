@@ -71,14 +71,7 @@ public class Main {
 				ReservationController.createReservation(guests, rooms, reservations, sc);
 				break;
 			case 9:
-				ReservationController.showAllReservation(reservations);
-				break;
-			case 10:
-				ReservationController.getReservationByName(reservations, sc);
-				break;
-			case 11:
-				ReservationController.getReservationById(reservations, sc);
-				break;
+				ReservationController.showAllReservation 
 			}
 		}while(i <= 16);
 		

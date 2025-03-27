@@ -5,10 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class ReservationController {
-	
-	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-	
 	public static void createReservation(ArrayList<Guest> guests, ArrayList<Room> rooms, ArrayList<Reservation> reservations, Scanner sc) {
+		private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		
 		System.out.println("Enter arrival date (yyyy-MM-dd) : ");
 		String arrDate = sc.next();
@@ -36,7 +34,7 @@ public class ReservationController {
 		LocalDate departureDate = LocalDate.parse(depDate, formatter);
 		
 		// Mencari room
-		Guest guest = guests.get(guestId);
+		Guest guest = reservation.getGuest();
 		Room room = RoomController.getRoomById(roomId, rooms);
 		if(room.isReserved(arrivalDate, departureDate)) {
 			System.out.println("This room is reserved");
@@ -56,6 +54,8 @@ public class ReservationController {
 			}else {
 				status = "Room has been reserved!";
 			}
+			
+			
 			
 			Reservation newReservation = new Reservation(arrivalDate, departureDate, total, status, guest, room);
 			newReservation.printAll();
@@ -118,8 +118,6 @@ public class ReservationController {
 		
 		Reservation reservation = reservations.get(id);
 		
-		
-		// Input
 		System.out.println("Enter arrival date (yyyy-MM-dd) : ");
 		String arrDate = sc.next();
 		
@@ -128,38 +126,5 @@ public class ReservationController {
 		
 		System.out.println("Enter room id : ");
 		int roomId = sc.nextInt();
-		
-		LocalDate arrivalDate = LocalDate.parse(arrDate, formatter);
-		LocalDate departureDate = LocalDate.parse(depDate, formatter);
-		
-		Guest guest = reservation.getGuest();
-		Room room = RoomController.getRoomById(roomId, rooms);
-		if(room.isReserved(arrivalDate, departureDate)) {
-			System.out.println("This room is reserved");
-			return;
-		}else {
-			int days = Period.between(arrivalDate, departureDate).getDays();
-			double sum = days * room.getPrice();
-			double total = sum - sum*guest.getDiscount()/100;
-			System.out.println("Total before discount:" + sum);
-			System.out.println("Total after discount: " + total);
-			
-			System.out.println("Will you pay now?\n1.Yes\n2.No");
-			String status = "";
-			int choiceStatus = sc.nextInt();
-			if(choiceStatus == 1) {
-				status = "Paid";
-			}else {
-				status = "Room has been reserved!";
-			}
-			
-		reservation.setArrivalDate(arrivalDate);
-		reservation.setDepartureDate(departureDate);
-		reservation.setRoom(room);
-		reservation.setStatus(status);
-		reservation.setPrice(total);
-		
-		reservations.add(id, reservation);
-	}
 	}
 }
