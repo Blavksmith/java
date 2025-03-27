@@ -1,0 +1,109 @@
+package com.meinHotel;
+import java.util.*;
+
+public class RoomController {
+	public static void addNewRoom(List<Room> rooms, Scanner sc) {
+		System.out.println("Enter the floor : ");
+		int floor = sc.nextInt();
+		
+		System.out.println("Enter the capacity : ");
+		int capacity = sc.nextInt();
+		
+		System.out.println("Enter the type : ");
+		String type = sc.next();
+		
+		System.out.println("Enter the desc : ");
+		String description = sc.next();
+		
+		System.out.println("Enter the price : ");
+		double price = sc.nextDouble();
+		
+		int id = 1001 + rooms.size();
+		Room room = new Room(id, floor, capacity, type, description, price);
+		rooms.add(room);
+		
+		System.out.println("Room added successfully" + "\n" + "\n");
+		
+	}
+	
+	public static void showAllRoom(ArrayList<Room> rooms) {
+		for(Room room : rooms) {
+			System.out.println("------------------");
+			room.printAll();
+			System.out.println("------------------");
+			System.out.println("");
+		}
+		
+		System.out.println("\n");
+	}
+	
+	
+	public static void editRoom(ArrayList<Room> rooms, Scanner sc) {
+		int id;
+		System.out.println("Enter room id: \n[If you want to see the list of the rooms (Enter -1) ]");
+		int i = sc.nextInt();
+		if(i == -1) {
+			showAllRoom(rooms);
+			System.out.println("Enter room id :");
+			int j = sc.nextInt();
+			id = j;
+		}else {
+			id = i;
+		}
+		
+		Room room = getRoomById(id, rooms);
+		
+		System.out.println("Enter the floor : \n (-1 to keep it)");
+		int floor = sc.nextInt();
+		if(floor == -1) floor = room.getFloor();
+		
+		System.out.println("Enter the capacity : \n (-1 to keep it)");
+		int capacity = sc.nextInt();
+		if(capacity == -1) capacity = room.getCapacity();
+		
+		System.out.println("Enter the type : \n (-1 to keep it)");
+		String type = sc.next();
+		if(type.equals("-1")) type = room.getType();
+		
+		System.out.println("Enter the desc : \n (-1 to keep it)");
+		String desc = sc.next();
+		if(desc.equals("-1")) desc = room.getDescription();
+		
+		System.out.println("Enter the price : \n (-1 to keep it)");
+		double price = sc.nextDouble();
+		if(price == -1) price = room.getPrice();
+		
+		room.setFloor(floor);
+		room.setCapacity(capacity);
+		room.setType(type);
+		room.setDescription(desc);
+		room.setPrice(price);
+		
+		for(Room r : rooms) {
+			if(r.getId() == id) {
+				r = room;
+//				rooms.set(rooms.size() - 1, room); 
+//				Tidak bisa set pakai id karena arr list nyimpen dari 0 
+//				Mungkin pakai size dari arraylist - 1
+				break;
+			}
+		}
+		
+		
+		
+	}
+	
+	public static Room getRoomById(int id, List<Room> rooms) {
+		Room room = new Room();
+		for(Room r : rooms) {
+			if(r.getId() == id) {
+				room = r;
+			}
+		}
+		
+		return room;
+	}
+
+
+	
+}

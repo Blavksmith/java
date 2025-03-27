@@ -1,0 +1,40 @@
+package com.meinHotel;
+import java.util.*;
+
+public class GuestController {
+	
+	public static void addNewGuest(ArrayList<Guest> guests, Scanner sc) {
+		System.out.println("Enter the name : ");
+		String name = sc.next();
+		
+		System.out.println("Enter the email : ");
+		String email = sc.next();
+		
+		System.out.println("Enter the discount : ");
+		int discount = sc.nextInt();
+		
+		Guest guest = new Guest(guests.size(), name, email, discount);
+	}
+
+	public static void showAllGuest(ArrayList<Guest> guests) {
+		for(Guest guest : guests) {
+			System.out.println("------------------");
+			guest.printAll();
+			System.out.println("------------------");
+			System.out.println("");
+		}
+	}
+	
+	public static void searchGuest(ArrayList<Guest> guests, Scanner sc) {
+		System.out.println("Enter the name : ");
+		String name = sc.next();
+		for(Guest guest : guests) {
+			if(guest.getName() == name) {
+				
+			}
+		}
+	}
+	
+	
+	
+}

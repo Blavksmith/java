@@ -1,0 +1,46 @@
+package com.meinHotel;
+import java.util.*;
+
+
+public class Main {
+	private static List<Guest> guests;
+	private static List<Room> rooms;
+	private static List<Employee> employees;
+	private static List<Reservation> reservations;
+	
+	public static void main(String[] args) {
+		
+//		Main main = new Main();
+//		main.reservations = new ArrayList<>();
+		guests = new ArrayList<>();
+		employees = new ArrayList<>();
+		rooms = new ArrayList<>();
+		reservations = new ArrayList<>();
+		
+		System.out.println("Welcome to Hotel Management System");
+		System.out.println("- - - - - - - - - - - - - - - - - -");
+		System.out.println("1. Add new room");
+		System.out.println("2. Show all rooms");
+		System.out.println("3. Edit room");
+		System.out.println("4. Add new guest");
+		System.out.println("5. Show all guest");
+		System.out.println("6. Search guest by name");
+		System.out.println("7. Edit guest data");
+		System.out.println("8. Create new reservation");
+		System.out.println("9. Show all reservation");
+		System.out.println("10. Get reservation by guest name");
+		System.out.println("11. Get reservation by id");
+		System.out.println("12. Edit reservation");
+		
+		Scanner sc = new Scanner(System.in);
+		int i = sc.nextInt();
+		switch(i) {
+		case 1:
+			
+		}
+		
+		
+
+	}
+
+}
